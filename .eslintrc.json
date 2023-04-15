@@ -1,0 +1,44 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "mocha": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "overrides": [
+        {
+            "files": ["test/**/*.js"]
+        }
+    ],
+    "rules": {
+        "max-len": "warn",
+        "no-return-await": "off",
+        "no-use-before-define": "off",
+        "no-shadow": "off",
+        "no-restricted-syntax": "off",
+        "no-async-promise-executor": "off",
+        "no-console": "off",
+        "no-await-in-loop": "off",
+        "no-plusplus": "off",
+        "radix": "off",
+        "consistent-return": "off",
+        "dot-notation": "off",
+        "no-unused-expressions": "off",
+        "quote-props": "off",
+        "no-throw-literal": "off",
+        "no-prototype-builtins": "off",
+        "no-useless-escape": "off",
+        "camelcase": "off",
+        "new-cap": "off"
+    }
+}

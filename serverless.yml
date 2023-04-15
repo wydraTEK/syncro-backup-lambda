@@ -1,0 +1,34 @@
+service: syncro-backup
+frameworkVersion: '3'
+package:
+  individually: true
+plugins:
+  - serverless-webpack
+  - serverless-dotenv-plugin
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: false
+    packager: 'npm'
+  stage: ${opt:stage, self:provider.stage}
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: develop
+  region: us-east-1
+  environment:
+    NODE_ENV: ${opt:stage}
+    ENV: ${opt:stage}
+    API_TOKEN: <SYNCRO_API_TOKEN>
+    API_URL: <SYNCRO_API_URL>
+    B2_APPLICATION_ID: <B2_APPLICATION_ID>
+    B2_APPLICATION_KEY: <B2_APPLICATION_KEY>
+    B2_BUCKET_ID: <B2_BUCKET_ID>
+  memorySize: 256
+  timeout: 300
+  versionFunctions: false
+functions:
+  backupSyncro:
+    handler: cron/backup/backupSyncro.handler
+    events:
+      - schedule: rate(24 hours)
